@@ -7,13 +7,14 @@ import { ApiProperty } from "@nestjs/swagger";
 })
 
 export class User {
-  @ApiProperty({example: 'Bob@gmail.com', description: 'User email'})
   @Prop({unique: [true, 'Duplicate email entered! ']})
   email: string
 
-  @ApiProperty({example: 'password', description: 'User password'})
   @Prop()
   password: string
+
+  @ApiProperty({example: 'token', description: 'token'})
+  token: string
 }
 
 export const UserSchema = SchemaFactory.createForClass(User)

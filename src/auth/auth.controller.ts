@@ -2,8 +2,9 @@ import { User } from './schemas/user.schema';
 import { AuthDto } from './dto/auth.dto';
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { AuthService } from "./auth.service";
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) { }
@@ -15,8 +16,8 @@ export class AuthController {
     return this.authService.login(signInDto)
   }
 
-  @Post('signUp')
-  signUp(@Body() signUpDto: AuthDto): Promise<{ token }> {
-    return this.authService.signUp(signUpDto)
-  }
+  // @Post('signUp')
+  // signUp(@Body() signUpDto: AuthDto): Promise<{ token }> {
+  //   return this.authService.signUp(signUpDto)
+  // }
 }
