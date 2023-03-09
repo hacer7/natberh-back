@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { ApiProperty } from "@nestjs/swagger";
 
 
 @Schema({
@@ -6,13 +7,11 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 })
 
 export class User {
-
-  @Prop()
-  name: string
-
+  @ApiProperty({example: 'Bob@gmail.com', description: 'User email'})
   @Prop({unique: [true, 'Duplicate email entered! ']})
   email: string
 
+  @ApiProperty({example: 'password', description: 'User password'})
   @Prop()
   password: string
 }
